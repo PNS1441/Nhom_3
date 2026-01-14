@@ -110,8 +110,8 @@ class DataCleaner:
         ]
 
         # Bỏ NA values
-        self.df_uk = self.df_uk.dropna(subset=["Description", "CustomerID"])
-
+        self.df_uk = self.df_uk.dropna(subset=["Description"])
+        self.df_uk = self.df_uk.replace("000nan", np.nan).dropna(how="any").copy()
         return self.df_uk
 
     def create_time_features(self):
